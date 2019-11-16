@@ -13,9 +13,12 @@ public class Main {
     static {
         PInt pInt=new PInt("num",5);
         PString pString=new PString("str","str value");
+        PObject pObject=new PObject(pInt,pString);
+        PObject ppObject=new PObject(pObject);
+        PArray pArray=new PArray(pObject,pObject);
         models=new ArrayList<>();
-        models.add(new PObject(pInt,pString));
-        models.add(new PArray(pInt,pInt));
+        models.add(ppObject);
+        models.add(new PArray<>(pArray,pArray));
     }
 
     public static void main(String [] args){

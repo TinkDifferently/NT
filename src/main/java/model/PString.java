@@ -1,15 +1,7 @@
 package model;
 
-public class PString implements ISerializable {
-    private String name;
-    private String value;
-
+public class PString extends PPrimitive {
     public PString(String name, String value) {
-        this.name = name;
-        this.value = value;
-    }
-
-    public String serialize() {
-        return String.format("\"%s\":\"%s\"",name,value);
+        super(name,value,JsonRules.STRING_RULE);
     }
 }

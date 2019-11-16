@@ -1,12 +1,13 @@
 package main;
 
 import model.ISerializable;
+import model.PInt;
 import model.PString;
 
 public class Main {
     static ISerializable model;
     static {
-        model=new PString("name","value");
+        model=new PInt("name",5);
     }
 
     public static void main(String [] args){

@@ -1,6 +1,7 @@
 package run;
 
 import java.util.Objects;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import to.deserialize.Model;
 
@@ -9,5 +10,21 @@ public class SerializeTests {
     public void testA(){
         if (!"{\"str\":\"zoo\",\"num\":12}".equals(new Model().serialize()))
             throw new AssertionError();
+    }
+
+    @Test
+    public void testB(){
+        if (!"{\"str\":\"zoo\",\"num\":12}".equals(new Model().serialize()))
+            throw new AssertionError();
+    }
+    @Test
+    public void testC(){
+        if (!"{\"str\":\"zoo\",\"num\":12}".equals(new Model().serialize()))
+            throw new AssertionError();
+    }
+    @Test
+    @DisplayName("Мой тест")
+    public void testD(){
+        System.out.println(new Model().serialize());
     }
 }

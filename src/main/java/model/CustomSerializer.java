@@ -27,7 +27,7 @@ public class CustomSerializer {
             return new PVoid();
         if (value instanceof ISerializable)
             return (ISerializable) value;
-        switch (field.getClass().getSimpleName()){
+        switch (value.getClass().getSimpleName()){
             case "String": return new PString(name, (String) value);
             case "Integer": return new PInt(name, (Integer) value);
         }
@@ -39,7 +39,8 @@ public class CustomSerializer {
             return "{}";
         Field[] fields=o.getClass().getDeclaredFields();
         ISerializable[] serializables=new ISerializable[fields.length];
-        Arrays.stream(fields).map(this::serialize).collect(Collectors.toList()).toArray(serializables);
-        return new PObject(serializables).toString();
+        for (int i=0; i<fields.length;i++)
+            serializables[i]=map(fields[i],o);
+        return new PObject(serializables).serialize();
     }
 }

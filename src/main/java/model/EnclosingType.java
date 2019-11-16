@@ -1,13 +1,15 @@
 package model;
 
 public enum EnclosingType {
-    ARRAY("[","]"),OBJECT("{","}")
+    ARRAY("[","]",false),OBJECT("{","}",true)
     ;
     private String open;
     private String close;
-    EnclosingType(String open, String close){
+    private boolean isUnique;
+    EnclosingType(String open, String close, boolean isUnique){
         this.open=open;
         this.close=close;
+        this.isUnique=isUnique;
     }
 
     public String open() {
@@ -16,5 +18,9 @@ public enum EnclosingType {
 
     public String close() {
         return close;
+    }
+
+    public boolean isUnique() {
+        return isUnique;
     }
 }

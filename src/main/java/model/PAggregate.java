@@ -9,15 +9,17 @@ import java.util.stream.Collectors;
 public abstract class PAggregate implements ISerializable{
     private Collection<ISerializable> serializables;
     private EnclosingType type;
-    public PAggregate(EnclosingType enclosingType, boolean isUnique, ISerializable... serializables){
+    public PAggregate(EnclosingType enclosingType, ISerializable... serializables){
         type=enclosingType;
-        this.serializables = isUnique
+        this.serializables = type.isUnique()
             ? Arrays.stream(serializables).collect(Collectors.toSet())
             : Arrays.stream(serializables).collect(Collectors.toList());
     }
     @Override
     public String serialize() {
-        String serialized= serializables.stream().map(ISerializable::serialize).collect(Collectors.joining(","));
+        String serialized= serializables.stream()
+            .map(ISerializable::serialize)
+            .collect(Collectors.joining(","));
         return String.format("%s%s%s",type.open(),serialized,type.close());
     }
 }

@@ -10,19 +10,14 @@ public abstract class PAggregate implements ISerializable{
     private Collection<ISerializable> serializables;
     private EnclosingType type;
     public PAggregate(EnclosingType enclosingType, boolean isUnique, ISerializable... serializables){
+        type=enclosingType;
         this.serializables = isUnique
             ? Arrays.stream(serializables).collect(Collectors.toSet())
             : Arrays.stream(serializables).collect(Collectors.toList());
     }
     @Override
     public String serialize() {
-        StringBuilder builder=new StringBuilder(type.open());
-        for (ISerializable serializable: serializables){
-            builder.append(serializable.serialize())
-                .append(',');
-        }
-        return builder.deleteCharAt(builder.length()-1)
-            .append(type.close())
-            .toString();
+        String serialized= serializables.stream().map(ISerializable::serialize).collect(Collectors.joining(","));
+        return String.format("%s%s%s",type.open(),serialized,type.close());
     }
 }

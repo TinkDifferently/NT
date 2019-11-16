@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public abstract class PAggregate implements ISerializable{
     private Collection<ISerializable> serializables;
     private EnclosingType type;
-    public PAggregate(EnclosingType enclosingType, ISerializable... serializables){
+    PAggregate(EnclosingType enclosingType, ISerializable... serializables){
         type=enclosingType;
         this.serializables = type.isUnique()
             ? Arrays.stream(serializables).collect(Collectors.toSet())

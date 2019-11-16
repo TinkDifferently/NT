@@ -3,6 +3,7 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 import model.ISerializable;
+import model.PArray;
 import model.PInt;
 import model.PObject;
 import model.PString;
@@ -14,6 +15,7 @@ public class Main {
         PString pString=new PString("str","str value");
         models=new ArrayList<>();
         models.add(new PObject(pInt,pString));
+        models.add(new PArray(pInt,pInt));
     }
 
     public static void main(String [] args){

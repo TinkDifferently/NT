@@ -13,12 +13,13 @@ public class Main {
     static {
         PInt pInt=new PInt("num",5);
         PString pString=new PString("str","str value");
-        PObject pObject=new PObject(pInt,pString);
-        PObject ppObject=new PObject(pObject);
-        PArray pArray=new PArray(pObject,pObject);
+        PObject pObject=new PObject("object",pInt,pString);
+        PArray pArray=new PArray("array");
+        PObject ppObject=new PObject(pObject,pArray);
+
         models=new ArrayList<>();
         models.add(ppObject);
-        models.add(new PArray<>(pArray,pArray));
+        //models.add(new PArray<>(pArray,pArray));
     }
 
     public static void main(String [] args){

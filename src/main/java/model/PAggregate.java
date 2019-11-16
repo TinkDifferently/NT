@@ -18,8 +18,8 @@ public abstract class PAggregate implements ISerializable{
         this.name=name;
         type=enclosingType;
         this.serializables = type.isUnique()
-            ? Arrays.stream(serializables).collect(Collectors.toSet())
-            : Arrays.stream(serializables).collect(Collectors.toList());
+            ? Arrays.stream(serializables).filter(o->!(o instanceof PVoid)).collect(Collectors.toSet())
+            : Arrays.stream(serializables).filter(o->!(o instanceof PVoid)).collect(Collectors.toList());
     }
 
     private final Function<String,String> namedSupplier=(serialized)->String.format("\"%s\"=%s%s%s",name,type.open(),serialized,

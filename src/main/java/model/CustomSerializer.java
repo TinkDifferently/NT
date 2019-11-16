@@ -29,7 +29,9 @@ public class CustomSerializer {
             return (ISerializable) value;
         switch (value.getClass().getSimpleName()){
             case "String": return new PString(name, (String) value);
+            case "String[]": return new PString(name,(String[])value);
             case "Integer": return new PInt(name, (Integer) value);
+            case "Integer[]": return new PInt(name,(Integer[])value);
         }
         return new PVoid();
     }

@@ -11,11 +11,4 @@ public class Model {
     private Integer num=12;
     private String[] strs={"cow","horse","cat"};
     private Integer[] nums={666,692,781};
-
-    public String serialize(){
-        PString pStr=new PString("str",str);
-        PInt pInt=new PInt("num",num);
-        return new PObject(pStr,pInt).serialize();
-    }
-
 }

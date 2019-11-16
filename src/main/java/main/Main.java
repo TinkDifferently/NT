@@ -16,7 +16,6 @@ public class Main {
         PObject pObject=new PObject("object",pInt,pString);
         PArray pArray=new PArray("array");
         PObject ppObject=new PObject(pObject,pArray);
-
         models=new ArrayList<>();
         models.add(ppObject);
         //models.add(new PArray<>(pArray,pArray));
